@@ -9,7 +9,7 @@ export default function SearchBar({ onSelect }) {
   async function runSearch() {
     setLoading(true);
     try {
-      const r = await searchPlace(q);
+      let r = await searchPlace(q);
       setResults(r);
       if (r.length === 1) onSelect(r[0]);
     } catch (e) {
@@ -22,9 +22,9 @@ export default function SearchBar({ onSelect }) {
 
   return (
     <>
-      <div className="topbar">
+      <div className="flex gap-2 items-center font-display width-max">
         <input
-          className="searchInput"
+          className="flex-1 px-4 py-2 border rounded outline-none"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Search a place (e.g., Westlands Nairobi)"
@@ -32,27 +32,25 @@ export default function SearchBar({ onSelect }) {
             if (e.key === "Enter") runSearch();
           }}
         />
-        <button className="btn" onClick={runSearch} disabled={loading}>
+        <button
+          className="px-4 py-2 bg-green-500 text-white rounded font-display width-max"
+          onClick={runSearch}
+          disabled={loading}
+        >
           {loading ? "Searching..." : "Search"}
         </button>
       </div>
 
       {results.length > 1 && (
-        <div style={{ padding: "8px 12px", borderBottom: "1px solid #eee" }}>
-          <div style={{ fontSize: 12, color: "#666", marginBottom: 6 }}>
+        <div className="p-2 border-b">
+          <div className="text-xs text-gray-500 mb-2 font-display">
             Pick a result:
           </div>
           {results.map((r, idx) => (
             <div
               key={idx}
               onClick={() => onSelect(r)}
-              style={{
-                padding: "8px 10px",
-                border: "1px solid #eee",
-                borderRadius: 10,
-                marginBottom: 6,
-                cursor: "pointer"
-              }}
+              className="p-2 border rounded mb-2 cursor-pointer font-display"
             >
               {r.label}
             </div>
@@ -62,4 +60,3 @@ export default function SearchBar({ onSelect }) {
     </>
   );
 }
-``

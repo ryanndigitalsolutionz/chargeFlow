@@ -14,7 +14,7 @@ export async function searchPlace(query) {
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
   lastCallMs = Date.now();
 
-  const url = new URL("https://nominatim.openstreetmap.org/search");
+  let url = new URL("https://nominatim.openstreetmap.org/search");
   url.searchParams.set("q", q);
   url.searchParams.set("format", "jsonv2"); // supported output format [2](https://nominatim.org/release-docs/latest/api/Search/)
   url.searchParams.set("limit", "5");       // limit is documented; max 40 [2](https://nominatim.org/release-docs/latest/api/Search/)

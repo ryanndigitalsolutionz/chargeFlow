@@ -1,51 +1,15 @@
+@import "tailwindcss";
+
 html, body, #root {
   height: 100%;
   margin: 0;
 }
 
-.app {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.topbar {
-  padding: 12px;
-  display: flex;
-  gap: 8px;
-  border-bottom: 1px solid #e9e9e9;
-  align-items: center;
-}
-
-.searchInput {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  outline: none;
-}
-
-.btn {
-  padding: 10px 12px;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  background: white;
-  cursor: pointer;
-}
-
-.content {
-  flex: 1;
-  display: flex;
-  min-height: 0; /* important for flex children */
-}
-
-.mapPanel {
-  flex: 1;
-  min-height: 0;
-}
-
-/* Leaflet map container must have height */
 .leaflet-container {
   height: 100%;
   width: 100%;
+}
+
+@theme {
+  --font-display: "Roboto Serif", "Roboto", serif;
 }
